@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.13.1)
 
+# app/CMakeLists.txt
+
+list(APPEND DTS_ROOT ${CMAKE_SOURCE_DIR}/dts/bindings)
+
 set(CONFIG_APPLICATION_DEFINED_SYSCALL true)
 list(APPEND BOARD_ROOT ${CMAKE_SOURCE_DIR})
 list(APPEND DTS_ROOT ${CMAKE_SOURCE_DIR})
