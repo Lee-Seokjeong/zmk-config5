@@ -7,7 +7,7 @@ pimoroni,trackball_pim447:
       const: "pimoroni,trackball_pim447"
     reg:
       description: "I2C address"
-      type: "array"
+      type: "integer"  # 수정된 부분 "array"
       items:
         - description: "I2C address"
           type: "integer"
