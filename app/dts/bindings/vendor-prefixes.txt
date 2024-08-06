@@ -1,3 +1,4 @@
 # vendor prefixes for device tree bindings
-pimoroni: ../zmk-config/app/dts/bindings/pimoroni,trackball_pim447.yaml
+pimoroni: zmk-config/app/dts/bindings/pimoroni,trackball_pim447.yaml
+
 
