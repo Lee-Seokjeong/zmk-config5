@@ -4,7 +4,7 @@ name: Trackpad Trackball
 type: shield
 url: https://github.com/jgreel/wearable_cirque_pim447
 requires:
-  - seeeduino_xiao_ble
+  - pro_micro
   - pimoroni trackball_pim447
   - cirque pinnacle trackpad
 features:
