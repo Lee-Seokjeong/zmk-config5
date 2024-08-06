@@ -28,7 +28,7 @@
 &pro_micro_i2c {
 	status = "okay";
 	trackball_pim447@a {
-		compatible = "pimoroni,trackball_pim447";
+		compatible = "zmk,trackball_pim447";      // pimoroni
 		reg = <0xa>;
 		label = "TRACKBALL_PIM447";
 		
