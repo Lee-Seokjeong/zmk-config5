@@ -1,2 +1,2 @@
 # vendor prefixes for device tree bindings
-pimoroni: /path/to/pimoroni,trackball_pim447.yaml
+pimoroni: app/dts/bindings/pimoroni,trackball_pim447.yaml
