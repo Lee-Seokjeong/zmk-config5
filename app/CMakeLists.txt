@@ -1,8 +1,13 @@
 cmake_minimum_required(VERSION 3.13.1)
 
-# app/CMakeLists.txt
+# zmk/app/CMakeLists.txt
 
-list(APPEND DTS_ROOT ${CMAKE_SOURCE_DIR}/dts/bindings)
+# Add the bindings directory to the search path
+set(DTS_BINDINGS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dts/bindings")
+list(APPEND DTS_INCLUDE_DIRS "${DTS_BINDINGS_DIR}")
+
+# Include all DTS bindings
+zephyr_include_directories(${DTS_INCLUDE_DIRS})
 
 set(CONFIG_APPLICATION_DEFINED_SYSCALL true)
 list(APPEND BOARD_ROOT ${CMAKE_SOURCE_DIR})
