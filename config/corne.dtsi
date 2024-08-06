@@ -65,6 +65,19 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10
 &pro_micro_i2c {
     status = "okay";
 
+    trackball_pim447: trackball_pim447@a {
+        compatible = "pimoroni,trackball_pim447";
+        reg = <0x0a>;  // 예시 I2C 주소, 실제 주소로 변경하세요.
+        move-factor = <1>;  // 포인터 이동 계수
+        button = <0>;  // 버튼 구성
+        scroll-divisor = <1>;  // 스크롤 휠 배수
+        mode = <0>;  // 트랙볼 모드
+    };
+};
+
+&pro_micro_i2c {
+    status = "okay";
+
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
