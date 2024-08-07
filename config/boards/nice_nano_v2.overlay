@@ -37,6 +37,24 @@
 
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
     };
+
+    trackball_pim447: trackball_pim447@0 {
+        compatible = "pimoroni,trackball_pim447";
+        reg = <0x0>;
+        /* 필요한 경우 추가 설정을 여기에 작성하세요 */
+    };
+};
+
+&i2c0 {
+    trackball_pim447: trackball_pim447@0 {
+        compatible = "pimoroni,trackball_pim447";
+        reg = <0>;
+        /* 추가 설정 필요 시 여기에 작성 */
+    };
+};
+
+&led_strip {
+    /* LED 스트립에 대한 추가 설정이 필요하다면 여기에 작성 */
 };
 
 / {
