@@ -1,0 +1,15 @@
+# zmk/app/dts/bindings/pimoroni/pimoroni,trackball_pim447.yaml
+$id: "pimoroni,trackball_pim447"
+$schema: "http://devicetree.org/schemas/dt-schema.yaml#"
+
+title: "Pimoroni Trackball PIM447"
+
+description: |
+  Device Tree bindings for the Pimoroni Trackball PIM447.
+
+properties:
+  compatible:
+    const: "pimoroni,trackball_pim447"
+
+required:
+  - compatible
