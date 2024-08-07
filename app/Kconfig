@@ -25,6 +25,12 @@ config USB_DEVICE_PID
 config USB_DEVICE_MANUFACTURER
 	default "ZMK Project"
 
+menuconfig ZMK_TRACKBALL_PIM447
+    bool "Enable PIM447 Trackball Support"
+    default y
+    help
+      Enable support for the Pimoroni Trackball PIM447.
+
 menu "HID"
 
 choice ZMK_HID_REPORT_TYPE
