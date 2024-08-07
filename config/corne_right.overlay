@@ -42,4 +42,4 @@
 		mode = <1>;             // Act as mouse wheels at startup (default: PIM447_MOVE for a pointer)
 	};
 };
-```
+
