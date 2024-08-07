@@ -63,16 +63,21 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10
 };
 
 &pro_micro_i2c {
-    status = "okay";
-
-    trackball_pim447: trackball_pim447@a {
-        compatible = "pimoroni,trackball_pim447";
-        reg = <0x0a>;  // 예시 I2C 주소, 실제 주소로 변경하세요.
-        move-factor = <1>;  // 포인터 이동 계수
-        button = <0>;  // 버튼 구성
-        scroll-divisor = <1>;  // 스크롤 휠 배수
-        mode = <0>;  // 트랙볼 모드
-    };
+	status = "okay";
+	trackball_pim447@a {
+		compatible = "pimoroni,trackball_pim447";
+		reg = <0xa>;
+		label = "TRACKBALL_PIM447";
+		move-factor = <2>;      // Increase pointer velocity (default: 1)
+		invert-move-x;          // Invert pointer X axis (left is right, and vice versa)
+		invert-move-y;          // Invert pointer Y axis (up is down, and vice versa)
+		button = <1>;           // Send right-click when pressing the ball (default: 0, ie. left-click)
+		swap-axes;              // Swap X and Y axes (horizontal is vertical, and vice versa)
+		scroll-divisor = <1>;   // Increase wheel velocity (default: 2)
+		invert-scroll-x;        // Invert wheel X axis (left is right, and vice versa)
+		invert-scroll-y;        // Invert wheel Y axis (up is down, and vice versa)
+		mode = <1>;             // Act as mouse wheels at startup (default: PIM447_MOVE for a pointer)
+	};
 };
 
 &pro_micro_i2c {
