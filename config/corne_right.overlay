@@ -29,7 +29,7 @@
 	status = "okay";
 	trackball_pim447@a {
 		compatible = "pimoroni,trackball_pim447";
-		reg = <0x0a>;
+		reg = <0xa>;
 		label = "TRACKBALL_PIM447";
 		
 		move-factor = <1>;      // Increase pointer velocity (default: 1)
