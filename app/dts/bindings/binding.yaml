@@ -1,0 +1,3 @@
+# zmk/app/dts/bindings/vendor-prefixes.yaml
+vendor-prefixes:
+  pimoroni: "http://www.pimoroni.com"
