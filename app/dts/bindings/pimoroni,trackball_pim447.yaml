@@ -1,6 +1,6 @@
 # zmk/app/dts/bindings/pimoroni,trackball_pim447.yaml
 
-$schema: http://devicetree.org/meta-schemas/base.yaml#
+$schema: http://devicetree.org/meta-schemas/base.yaml
 title: Pimoroni Trackball PIM447
 
 pimoroni,trackball_pim447:
