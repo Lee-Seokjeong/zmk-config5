@@ -1,25 +1,35 @@
 # zmk/app/dts/bindings/pimoroni,trackball_pim447.yaml
 
+$schema: http://devicetree.org/meta-schemas/base.yaml#
+title: Pimoroni Trackball PIM447
+
 pimoroni,trackball_pim447:
-  type: "object"
+  type: object
   properties:
     compatible:
       const: "pimoroni,trackball_pim447"
     reg:
-      description: "I2C address"
-      type: "integer"
+      description: "I2C address of the trackball"
+      type: integer
+      minimum: 0
+      maximum: 127  # I2C 주소 범위에 따라 조정 가능
     move-factor:
       description: "Pointer movement factor"
-      type: "integer"
+      type: integer
+      default: 1
     button:
       description: "Button configuration"
-      type: "integer"
+      type: integer
+      default: 0
     scroll-divisor:
       description: "Scroll wheel divisor"
-      type: "integer"
+      type: integer
+      default: 1
     mode:
       description: "Trackball mode"
-      type: "integer"
+      type: integer
+      default: 0
   required:
     - compatible
     - reg
+  additionalProperties: false
