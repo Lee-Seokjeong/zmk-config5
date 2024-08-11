@@ -1,0 +1,4 @@
+/ {
+    compatible = "pimoroni,trackball_pim447";
+    // 다른 필요한 설정
+};
