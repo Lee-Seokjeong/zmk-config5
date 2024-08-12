@@ -5,3 +5,14 @@ config BOARD_ENABLE_DCDC
 	select SOC_DCDC_NRF52X
 	default y
 	depends on (BOARD_NICE_NANO || BOARD_NICE_NANO_V2)
+
+menu "Corne Shield Configuration"
+
+config ZMK_TRACKBALL_PIM447
+    bool "Enable PIM447 Trackball"
+    default y
+    help
+        Enable support for the PIM447 trackball.
+
+endmenu
+
