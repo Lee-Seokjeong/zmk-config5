@@ -1,50 +1,42 @@
-if SHIELD_CORNE_LEFT
+# Copyright (c) 2021 The ZMK Contributors
+# SPDX-License-Identifier: MIT
 
-config ZMK_KEYBOARD_NAME
-    default "Corne"
+if BOARD_NICE_NANO || BOARD_NICE_NANO_V2
 
-config ZMK_SPLIT_ROLE_CENTRAL
-    default y
+config BOARD
+	default "nice_nano"
 
-endif
+if USB
 
-if SHIELD_CORNE_LEFT || SHIELD_CORNE_RIGHT
+config USB_NRFX
+	default y
 
-config ZMK_SPLIT
-    default y
+config USB_DEVICE_STACK
+	default y
 
-if ZMK_DISPLAY
+endif # USB
 
-config I2C
-    default y
+config BT_CTLR
+	default BT
 
-config SSD1306
-    default y
+config ZMK_BLE
+	default y
 
-endif # ZMK_DISPLAY
+config ZMK_USB
+	default y
 
-if LVGL
+endif # BOARD_NICE_NANO || BOARD_NICE_NANO_V2
 
-config LV_Z_VDB_SIZE
-    default 64
+if BOARD_NICE_NANO
 
-config LV_DPI_DEF
-    default 148
+config ZMK_BATTERY_VOLTAGE_DIVIDER
+	default y
 
-config LV_Z_BITS_PER_PIXEL
-    default 1
+endif # BOARD_NICE_NANO
 
-choice LV_COLOR_DEPTH
-    default LV_COLOR_DEPTH_1
-endchoice
+if BOARD_NICE_NANO_V2
 
-endif # LVGL
+config ZMK_BATTERY_NRF_VDDH
+	default y
 
-endif
-
-if SHIELD_CIRQUETRACKPAD || SHIELD_PIMTRACKBALL
-
-config ZMK_SPLIT
-    default y
-
-endif
+endif # BOARD_NICE_NANO_V2
