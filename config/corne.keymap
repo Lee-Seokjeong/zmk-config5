@@ -53,5 +53,19 @@
                              &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
             >;
         };
+
+ // 트랙볼 입력에 대한 설정
+        trackball_input {
+            compatible = "pimoroni,trackball_pim447";
+            move-factor = <2>;  // 포인터 이동 속도 증가
+            invert-move-x;      // X축 반전
+            invert-move-y;      // Y축 반전
+            button = <1>;       // 오른쪽 클릭
+            swap-axes;          // 축 교환
+            scroll-divisor = <1>; // 스크롤 속도 조절
+            invert-scroll-x;    // 스크롤 X축 반전
+            invert-scroll-y;    // 스크롤 Y축 반전
+            mode = <1>;         // 초기 모드 설정
+        };
     };
 };
