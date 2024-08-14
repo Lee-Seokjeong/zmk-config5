@@ -1,43 +1,64 @@
 if SHIELD_CORNE_RIGHT
 
+// 키보드 이름을 "Corne"로 설정
 config ZMK_KEYBOARD_NAME
     default "Corne"
 
+// 키보드 역할을 중앙(Central)으로 설정
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
-endif
+// 트랙볼 기능을 활성화
+config TRACKBALL_ENABLED
+    default y
+
+// 트랙볼의 X 및 Y 축 핀 설정 (SCL과 SDA 핀 번호)
+config TRACKBALL_X_PIN
+    default <20>  // SCL 핀 번호 P0.20
+config TRACKBALL_Y_PIN
+    default <17>  // SDA 핀 번호 P0.17
+
+endif // SHIELD_CORNE_RIGHT 조건 끝
 
 if SHIELD_CORNE_LEFT || SHIELD_CORNE_RIGHT
 
+// 분할 키보드 기능을 활성화
 config ZMK_SPLIT
     default y
 
+// 디스플레이 관련 설정이 활성화되어 있는 경우
 if ZMK_DISPLAY
 
+// I2C 통신 기능을 활성화
 config I2C
     default y
 
+// SSD1306 디스플레이 드라이버를 활성화
 config SSD1306
     default y
 
-endif # ZMK_DISPLAY
+endif // ZMK_DISPLAY 조건 끝
 
 if LVGL
 
+// VDB(Variable Display Buffer) 크기를 64로 설정
 config LV_Z_VDB_SIZE
     default 64
 
+// 기본 DPI(Dots Per Inch)를 148로 설정
 config LV_DPI_DEF
     default 148
 
+// Z 축 비트당 픽셀 수를 1로 설정
 config LV_Z_BITS_PER_PIXEL
     default 1
 
+// 색 깊이 선택 설정
 choice LV_COLOR_DEPTH
+    // 기본 색 깊이를 1로 설정 (흑백)
     default LV_COLOR_DEPTH_1
-endchoice
+endchoice // 색 깊이 선택 끝
 
-endif # LVGL
+endif // LVGL 조건 끝
 
-endif
+endif // SHIELD_CORNE_LEFT || SHIELD_CORNE_RIGHT 조건 끝
