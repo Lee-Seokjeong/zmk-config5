@@ -3,10 +3,21 @@
 #include "splitmouse.dtsi" // Notice that the main dtsi files are included in the overlay.
 #include <dt-bindings/zmk/trackball_pim447.h> // for PIM447_MOVE and PIM447_SCROLL constants
 
-&default_kscan {
-    row-gpios
+/ {
+    chosen {
+        zmk,kscan = &default_kscan;
+    };
 
-        ;
+    default_kscan: kscan {
+        compatible = "zmk,kscan-gpio-direct";
+        label = "default_kscan";
+
+        input-gpios
+            = <&xiao_d 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row A from the schematic file
+            , <&xiao_d 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row B from the schematic file
+            //, <&xiao_d 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row C from the schematic file
+            ;
+    };
 };
 
 &pro_micro_i2c {
