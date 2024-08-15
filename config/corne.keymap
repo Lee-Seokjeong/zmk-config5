@@ -26,9 +26,6 @@
 &kp LCTRL  &kp A  &kp S  &kp D     &kp F           &kp G        &kp H      &kp J        &kp K      &kp L    &kp SEMI  &kp SQT
 &kp LSHFT  &kp Z  &kp X  &kp C     &kp V           &kp B        &kp N      &kp M        &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
                          &kp LGUI  &lt 2 LEFT_ALT  &kp ENTER    &kp SPACE  &lt 1 RCTRL  &kp RALT
-              >;
-           // 트랙볼 입력 통합
-            bindings += <
                 &mouse LCLK
                 &mouse RCLK
                 &mouse MCLK
