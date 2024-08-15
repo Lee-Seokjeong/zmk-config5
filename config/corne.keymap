@@ -18,8 +18,8 @@
         // 오른쪽 키보드 모듈에만 트랙볼 설정
         right {
             bindings = <
-                &mouse LCLK,   // 트랙볼 왼쪽 클릭
-                &mouse RCLK,   // 트랙볼 오른쪽 클릭
+                &mouse LCLK    // 트랙볼 왼쪽 클릭
+                &mouse RCLK    // 트랙볼 오른쪽 클릭
                 &mouse MCLK    // 트랙볼 가운데 클릭
             >;
         };
@@ -27,8 +27,8 @@
         // 기본 레이어 설정
         default_layer {
             bindings = <
-                &mouse LCLK,   // 트랙볼 왼쪽 클릭
-                &mouse RCLK,   // 트랙볼 오른쪽 클릭
+                &mouse LCLK    // 트랙볼 왼쪽 클릭
+                &mouse RCLK    // 트랙볼 오른쪽 클릭
                 &mouse MCLK    // 트랙볼 가운데 클릭
             >;
         };
