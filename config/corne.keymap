@@ -29,7 +29,6 @@
               >;
            // 트랙볼 입력 통합
             bindings += <
-                &mouse MOVE_X &mouse MOVE_Y  // 트랙볼 X/Y 이동 (이건 바인딩이 필요)
                 &mouse LCLK
                 &mouse RCLK
                 &mouse MCLK
