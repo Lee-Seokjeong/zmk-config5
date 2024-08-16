@@ -16,6 +16,11 @@ include_directories(${DTS_BINDINGS_DIR})
 list(APPEND DTS_ROOT ${CMAKE_SOURCE_DIR}/drivers/zephyr)
 list(APPEND ZEPHYR_EXTRA_MODULES ${CMAKE_SOURCE_DIR}/drivers)
 
+# trackball_pim447 소스 파일 추가
+zephyr_library_sources(
+    src/trackball_pim447.c
+)
+
 include(cmake/zmk_config.cmake)
 
 # Add source files to the "app" target
