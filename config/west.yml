@@ -1,6 +1,6 @@
 manifest:
   remotes:
-    - name: zephyrproject-rtos
+    - name: zmk-config
       url-base: https://github.com/Lee-Seokjeong/zmk-config
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
