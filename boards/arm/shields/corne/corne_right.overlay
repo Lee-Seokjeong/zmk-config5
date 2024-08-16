@@ -42,3 +42,15 @@
 		mode = <1>;             // Act as mouse wheels at startup (default: PIM447_MOVE for a pointer)
 	};
 };
+
+// ZMK 장치 노드 설정 추가
+/ {
+    trackball_pim447 {
+        compatible = "zmk,trackball-pim447";
+        label = "Trackball";
+        x-axis = <&zmk_trackball_x>;
+        y-axis = <&zmk_trackball_y>;
+        button-1 = <&zmk_trackball_btn1>;
+        button-2 = <&zmk_trackball_btn2>;
+    };
+};
