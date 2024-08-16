@@ -1,0 +1,5 @@
+config ZMK_TRACKBALL_PIM447
+    bool "Enable PIM447 Trackball"
+    default y
+    help
+      Enable support for the PIM447 trackball module.
