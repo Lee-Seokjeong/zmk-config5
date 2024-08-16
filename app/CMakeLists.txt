@@ -1,44 +1,24 @@
 cmake_minimum_required(VERSION 3.13.1)
 
-# zmk/app/CMakeLists.txt
+# Find Zephyr. This also loads Zephyr's build system.
+find_package(Zephyr REQUIRED HINTS ../zephyr)
+project(zmk)
 
 # Add the bindings directory to the search path
 set(DTS_BINDINGS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dts/bindings")
 list(APPEND DTS_INCLUDE_DIRS "${DTS_BINDINGS_DIR}")
 
-# CMakeLists.txt에서 zmk-config 경로를 추가합니다.
-# set(ZEPHYR_EXTRA_MODULES ${CMAKE_SOURCE_DIR}/zmk-config)
-
-# CMakeLists.txt에서 include 디렉토리를 추가합니다.
-include_directories(${CMAKE_SOURCE_DIR}/app/include)
-
-# CMakeLists.txt에서 target에 include 디렉토리를 추가합니다.
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/app/include)
-
-# Include all DTS bindings
-zephyr_include_directories(${DTS_INCLUDE_DIRS})
-
 # Add include directories for custom header files
-target_include_directories(app PRIVATE ${CMAKE_SOURCE_DIR}/app/include/dt-bindings)
+include_directories(${CMAKE_SOURCE_DIR}/app/include)
+include_directories(${CMAKE_SOURCE_DIR}/app/include/dt-bindings)
 
 # Add custom Zephyr module and directories
 list(APPEND DTS_ROOT ${CMAKE_SOURCE_DIR}/drivers/zephyr)
-
-list(APPEND ZEPHYR_EXTRA_MODULES
-  ${CMAKE_CURRENT_SOURCE_DIR}/drivers
-)
+list(APPEND ZEPHYR_EXTRA_MODULES ${CMAKE_CURRENT_SOURCE_DIR}/drivers)
 
 include(cmake/zmk_config.cmake)
 
-# Find Zephyr. This also loads Zephyr's build system.
-find_package(Zephyr REQUIRED HINTS ../zephyr)
-project(zmk)
-
-zephyr_linker_sources(RODATA include/linker/zmk-events.ld)
-
 # Add source files to the "app" target
-target_include_directories(app PRIVATE include)
-target_sources_ifdef(CONFIG_ZMK_SLEEP app PRIVATE src/power.c)
 target_sources(app PRIVATE src/activity.c)
 target_sources(app PRIVATE src/kscan.c)
 target_sources(app PRIVATE src/matrix_transform.c)
@@ -65,6 +45,7 @@ target_sources_ifdef(CONFIG_ZMK_WPM app PRIVATE src/events/wpm_state_changed.c)
 target_sources_ifdef(CONFIG_ZMK_BLE app PRIVATE src/events/ble_active_profile_changed.c)
 target_sources_ifdef(CONFIG_ZMK_BLE app PRIVATE src/events/battery_state_changed.c)
 target_sources_ifdef(CONFIG_USB app PRIVATE src/events/usb_conn_state_changed.c)
+
 if ((NOT CONFIG_ZMK_SPLIT) OR CONFIG_ZMK_SPLIT_BLE_ROLE_CENTRAL)
   target_sources(app PRIVATE src/behaviors/behavior_key_press.c)
   target_sources(app PRIVATE src/behaviors/behavior_reset.c)
@@ -85,23 +66,30 @@ if ((NOT CONFIG_ZMK_SPLIT) OR CONFIG_ZMK_SPLIT_BLE_ROLE_CENTRAL)
   target_sources(app PRIVATE src/combo.c)
   target_sources(app PRIVATE src/keymap.c)
 endif()
+
 target_sources_ifdef(CONFIG_ZMK_RGB_UNDERGLOW app PRIVATE src/behaviors/behavior_rgb_underglow.c)
 target_sources_ifdef(CONFIG_ZMK_BLE app PRIVATE src/behaviors/behavior_bt.c)
 target_sources_ifdef(CONFIG_ZMK_BLE app PRIVATE src/ble.c)
 target_sources_ifdef(CONFIG_ZMK_BLE app PRIVATE src/battery.c)
+
 if (CONFIG_ZMK_SPLIT_BLE AND (NOT CONFIG_ZMK_SPLIT_BLE_ROLE_CENTRAL))
   target_sources(app PRIVATE src/split_listener.c)
   target_sources(app PRIVATE src/split/bluetooth/service.c)
 endif()
+
 if (CONFIG_ZMK_SPLIT_BLE AND CONFIG_ZMK_SPLIT_BLE_ROLE_CENTRAL)
   target_sources(app PRIVATE src/split/bluetooth/central.c)
 endif()
+
 target_sources_ifdef(CONFIG_USB app PRIVATE src/usb.c)
 target_sources_ifdef(CONFIG_ZMK_BLE app PRIVATE src/hog.c)
 target_sources_ifdef(CONFIG_ZMK_RGB_UNDERGLOW app PRIVATE src/rgb_underglow.c)
 target_sources(app PRIVATE src/endpoints.c)
 target_sources(app PRIVATE src/hid_listener.c)
 target_sources(app PRIVATE src/main.c)
+
+# Add include directories for custom modules
+target_include_directories(app PRIVATE ${CMAKE_SOURCE_DIR}/app/include/dt-bindings)
 
 add_subdirectory(src/display/)
 
