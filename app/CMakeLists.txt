@@ -6,6 +6,9 @@ cmake_minimum_required(VERSION 3.13.1)
 set(DTS_BINDINGS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dts/bindings")
 list(APPEND DTS_INCLUDE_DIRS "${DTS_BINDINGS_DIR}")
 
+# CMakeLists.txt에서 zmk-config 경로를 추가합니다.
+set(ZEPHYR_EXTRA_MODULES ${CMAKE_SOURCE_DIR}/zmk-config)
+
 # Include all DTS bindings
 zephyr_include_directories(${DTS_INCLUDE_DIRS})
 
