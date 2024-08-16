@@ -9,11 +9,10 @@ list(APPEND DTS_INCLUDE_DIRS "${DTS_BINDINGS_DIR}")
 # Include all DTS bindings
 zephyr_include_directories(${DTS_INCLUDE_DIRS})
 
-set(CONFIG_APPLICATION_DEFINED_SYSCALL true)
-list(APPEND BOARD_ROOT ${CMAKE_SOURCE_DIR})
-list(APPEND DTS_ROOT ${CMAKE_SOURCE_DIR})
+# Add include directories for custom header files
+target_include_directories(app PRIVATE ${CMAKE_SOURCE_DIR}/app/include/dt-bindings)
 
-# Add our custom Zephyr module for drivers w/ syscalls, etc.
+# Add custom Zephyr module and directories
 list(APPEND DTS_ROOT ${CMAKE_SOURCE_DIR}/drivers/zephyr)
 
 list(APPEND ZEPHYR_EXTRA_MODULES
@@ -28,8 +27,7 @@ project(zmk)
 
 zephyr_linker_sources(RODATA include/linker/zmk-events.ld)
 
-# Add your source file to the "app" target. This must come after
-# find_package(Zephyr) which defines the target.
+# Add source files to the "app" target
 target_include_directories(app PRIVATE include)
 target_sources_ifdef(CONFIG_ZMK_SLEEP app PRIVATE src/power.c)
 target_sources(app PRIVATE src/activity.c)
@@ -43,7 +41,6 @@ target_sources_ifdef(CONFIG_ZMK_TRACKBALL_PIM447 app PRIVATE src/mouse/trackball
 target_sources(app PRIVATE src/sensors.c)
 target_sources_ifdef(CONFIG_ZMK_WPM app PRIVATE src/wpm.c)
 target_sources(app PRIVATE src/event_manager.c)
-target_sources_ifdef(CONFIG_ZMK_EXT_POWER app PRIVATE src/ext_power_generic.c)
 target_sources(app PRIVATE src/events/activity_state_changed.c)
 target_sources(app PRIVATE src/events/position_state_changed.c)
 target_sources(app PRIVATE src/events/layer_state_changed.c)
@@ -84,11 +81,11 @@ target_sources_ifdef(CONFIG_ZMK_BLE app PRIVATE src/behaviors/behavior_bt.c)
 target_sources_ifdef(CONFIG_ZMK_BLE app PRIVATE src/ble.c)
 target_sources_ifdef(CONFIG_ZMK_BLE app PRIVATE src/battery.c)
 if (CONFIG_ZMK_SPLIT_BLE AND (NOT CONFIG_ZMK_SPLIT_BLE_ROLE_CENTRAL))
-	target_sources(app PRIVATE src/split_listener.c)
-	target_sources(app PRIVATE src/split/bluetooth/service.c)
+  target_sources(app PRIVATE src/split_listener.c)
+  target_sources(app PRIVATE src/split/bluetooth/service.c)
 endif()
 if (CONFIG_ZMK_SPLIT_BLE AND CONFIG_ZMK_SPLIT_BLE_ROLE_CENTRAL)
-	target_sources(app PRIVATE src/split/bluetooth/central.c)
+  target_sources(app PRIVATE src/split/bluetooth/central.c)
 endif()
 target_sources_ifdef(CONFIG_USB app PRIVATE src/usb.c)
 target_sources_ifdef(CONFIG_ZMK_BLE app PRIVATE src/hog.c)
