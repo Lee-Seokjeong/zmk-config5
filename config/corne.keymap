@@ -59,18 +59,6 @@
                                                    &ext_power EP_OFF  &tog 2              &ext_power EP_ON    &ext_power EP_TOG  &tog 1          &kp RALT
             >;
         };
-
-        trackball_layer {
-            // -----------------------------------------------------------------------------------------
-            // |     |     |     |     |     |     |   |     |     |     |     |     |     |
-            // |     |     |     |     |     |     |   |     |     |     |     |     |     |
-            // |     |     |     |     |     |     |   |     |     |     |     |     |     |
-            //                    |     |     | SPC |   |     |     |     |
-
-            bindings = <
-&trackball_pim447 TRACKBALL
-            >;
-        };
     };
 };
 
