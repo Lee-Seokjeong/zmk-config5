@@ -9,6 +9,7 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/trackball.h>
 
 / {
     keymap {
@@ -58,5 +59,13 @@
                                                    &ext_power EP_OFF  &tog 2              &ext_power EP_ON    &ext_power EP_TOG  &tog 1          &kp RALT
             >;
         };
+    };
+trackball_pim447 {
+        compatible = "zmk,trackball-pim447";
+        label = "Trackball";
+        x-axis = <&zmk_trackball_x>;  // X축 정의
+        y-axis = <&zmk_trackball_y>;  // Y축 정의
+        button-1 = <&zmk_trackball_btn1>;  // 버튼 1 정의
+        button-2 = <&zmk_trackball_btn2>;  // 버튼 2 정의
     };
 };
