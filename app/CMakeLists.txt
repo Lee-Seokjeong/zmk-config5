@@ -7,7 +7,7 @@ set(DTS_BINDINGS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dts/bindings")
 list(APPEND DTS_INCLUDE_DIRS "${DTS_BINDINGS_DIR}")
 
 # CMakeLists.txt에서 zmk-config 경로를 추가합니다.
-set(ZEPHYR_EXTRA_MODULES ${CMAKE_SOURCE_DIR}/zmk-config)
+# set(ZEPHYR_EXTRA_MODULES ${CMAKE_SOURCE_DIR}/zmk-config)
 
 # CMakeLists.txt에서 include 디렉토리를 추가합니다.
 include_directories(${CMAKE_SOURCE_DIR}/app/include)
