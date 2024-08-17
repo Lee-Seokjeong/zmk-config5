@@ -201,7 +201,7 @@ config ZMK_SPLIT_BLE_PERIPHERAL_POSITION_QUEUE_SIZE
 	default 10
 
 config ZMK_USB
-	default n
+	default y
 
 config BT_MAX_PAIRED
 	default 1
