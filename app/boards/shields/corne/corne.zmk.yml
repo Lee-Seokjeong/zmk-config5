@@ -15,6 +15,7 @@ features:
   - underglow
   - backlight
   - mouse
+  - trackball
 siblings:
   - corne_left
   - corne_right
