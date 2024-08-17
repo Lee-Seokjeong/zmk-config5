@@ -42,7 +42,7 @@
 	status = "okay";
 };
 
-i2c0: i2c@40003000 {
+/i2c0: i2c@40003000 {
         compatible = "nordic,nrf-twi";
         reg = <0x40003000 0x1000>;
         interrupts = <0>;
