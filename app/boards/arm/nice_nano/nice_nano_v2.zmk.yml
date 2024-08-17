@@ -7,4 +7,6 @@ outputs:
   - usb
   - ble
 url: https://nicekeyboards.com/nice-nano
-exposes: [pro_micro]
+exposes:
+  - pro_micro
+  - trackball_pim447
