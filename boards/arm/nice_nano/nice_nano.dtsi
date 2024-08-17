@@ -42,10 +42,14 @@
 	status = "okay";
 };
 
-&i2c0 {
-	compatible = "nordic,nrf-twi";
-	sda-pin = <17>;
-	scl-pin = <20>;
+i2c0: i2c@40003000 {
+        compatible = "nordic,nrf-twi";
+        reg = <0x40003000 0x1000>;
+        interrupts = <0>;
+        status = "okay";
+        clock-frequency = <100000>;
+        sda-pin = <17>;
+        scl-pin = <20>;
 };
 
 &uart0 {
