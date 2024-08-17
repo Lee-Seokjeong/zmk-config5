@@ -13,6 +13,13 @@
             low-power-enable;
         };
     };
+
+    i2c_default: i2c_default {
+        group1 {
+            psels = <NRF_PSEL(I2C_SCL, 0, 20)>;
+            psels = <NRF_PSEL(I2C_SDA, 0, 17)>;
+        };
+    };
 };
 
 &spi3 {
@@ -36,6 +43,27 @@
         spi-zero-frame = <0x40>;
 
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+    };
+};
+
+&pro_micro_i2c {
+    compatible = "nordic,nrf-i2c";
+    status = "okay";
+    pinctrl-0 = <&i2c_default>;
+
+    trackball_pim447@a {
+        compatible = "pimoroni,trackball_pim447";
+        reg = <0xa>; /* I2C address */
+        label = "TRACKBALL_PIM447";
+        move-factor = <2>;
+        invert-move-x;
+        invert-move-y;
+        button = <1>;
+        swap-axes;
+        scroll-divisor = <1>;
+        invert-scroll-x;
+        invert-scroll-y;
+        mode = <1>;
     };
 };
 
