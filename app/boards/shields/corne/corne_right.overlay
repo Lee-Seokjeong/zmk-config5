@@ -46,10 +46,7 @@
         invert-scroll-y;        // Invert wheel Y axis (up is down, and vice versa)
         mode = <1>;             // Act as mouse wheels at startup (default: PIM447_MOVE for a pointer)
         
-        // trackball_x 및 trackball_y 노드 정의
-        trackball_x = <0>; // 실제로는 이 값을 해당 핀이나 센서에 맞춰 정의해야 합니다.
-        trackball_y = <0>; // 실제로는 이 값을 해당 핀이나 센서에 맞춰 정의해야 합니다.
-    };
+       };
 };
 
     &default_kscan {
