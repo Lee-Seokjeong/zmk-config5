@@ -40,3 +40,7 @@ config ZMK_BATTERY_NRF_VDDH
 	default y
 
 endif # BOARD_NICE_NANO_V2
+
+# Add TRACKBALL_PIM447 configuration
+config ZMK_TRACKBALL_PIM447
+	default n
