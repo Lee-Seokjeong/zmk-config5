@@ -12,7 +12,7 @@ menu "Corne Shield Configuration"
 
 config ZMK_TRACKBALL_PIM447
     bool "Enable PIM447 Trackball"
-    default y
+    default n
     help
         Enable support for the PIM447 trackball.
 
