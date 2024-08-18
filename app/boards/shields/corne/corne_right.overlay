@@ -5,6 +5,8 @@
  */
 
 #include "corne.dtsi"
+#ifdef CONFIG_ZMK_TRACKBALL_PIM447
+#include <dt-bindings/zmk/trackball_pim447.h>
 
 &default_transform {
     col-offset = <6>;
