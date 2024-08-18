@@ -1,4 +1,4 @@
-if SHIELD_CORNE_RIGHT
+if SHIELD_CORNE_LEFT
 
 // 키보드 이름을 "Corne"로 설정
 config ZMK_KEYBOARD_NAME
