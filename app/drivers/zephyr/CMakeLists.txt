@@ -9,5 +9,6 @@ target_sources(app PRIVATE
 # Add the include directories for the module
 target_include_directories(app PRIVATE
     ${ZEPHYR_BASE}/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/include/dt-bindings
 )
