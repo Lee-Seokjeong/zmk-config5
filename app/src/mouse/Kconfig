@@ -1,6 +1,12 @@
 # Copyright (c) 2021 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
+config ZMK_TRACKBALL_PIM447
+    bool "Enable ZMK trackball PIM447 support"
+    default n
+    help
+      Enable support for the PIM447 trackball sensor in ZMK.
+
 menuconfig ZMK_MOUSE
     bool "Enable ZMK mouse emulation"
     default n
