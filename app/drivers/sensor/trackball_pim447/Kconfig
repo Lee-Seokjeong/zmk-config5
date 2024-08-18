@@ -4,20 +4,8 @@ config ZMK_TRACKBALL_PIM447
     bool "Enable ZMK trackball PIM447 support"
     default n
     help
-      Enable support for the PIM447 trackball sensor in ZMK. 
+      Enable support for the PIM447 trackball sensor in ZMK.
 
-config PIM447
-    bool "Enable PIM447 Sensor"
-    default n
-    help
-      Enable the PIM447 sensor.
-
-config PIM447_CPI
-    int "PIM447 CPI (Counts Per Inch)"
-    default 3000
-    help
-      Set the CPI value for the PIM447 trackball sensor.
-
-# Add other configuration options related to PIM447 here
+# 여기에 다른 설정 옵션 추가
 
 endmenu
