@@ -1,0 +1,6 @@
+config ZMK_TRACKBALL_PIM447
+    bool "Enable ZMK trackball PIM447 support"
+    default n
+    help
+      Enable support for the PIM447 trackball sensor on this board/shield.
+      Ensure that the board or shield supports the PIM447 sensor and configure it accordingly.
