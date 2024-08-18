@@ -5,7 +5,7 @@ config ZMK_BEHAVIOR_METADATA
     bool "Metadata"
     help
       Enabling this option adds APIs for documenting and fetching
-      metadata describing a behaviors name, and supported parameters.
+      metadata describing a behavior's name, and supported parameters.
 
 config ZMK_BEHAVIOR_LOCAL_IDS
     bool "Local IDs"
@@ -25,8 +25,8 @@ config ZMK_BEHAVIOR_LOCAL_ID_TYPE_SETTINGS_TABLE
     help
       Use persistent entries in the settings subsystem to identify
       behaviors by local ID, which uses the device name to generate
-      a new settings entry tying a presistant local ID to that name.
-      This guarantees stable, colllision-free local IDs at the expense
+      a new settings entry tying a persistent local ID to that name.
+      This guarantees stable, collision-free local IDs at the expense
       of settings storage used.
 
 config ZMK_BEHAVIOR_LOCAL_ID_TYPE_CRC16
@@ -39,7 +39,6 @@ config ZMK_BEHAVIOR_LOCAL_ID_TYPE_CRC16
 endchoice
 
 endif
-
 
 config ZMK_BEHAVIOR_HOLD_TAP
     bool
@@ -112,3 +111,22 @@ config ZMK_BEHAVIOR_MACRO
     bool
     default y
     depends on DT_HAS_ZMK_BEHAVIOR_MACRO_ENABLED || DT_HAS_ZMK_BEHAVIOR_MACRO_ONE_PARAM_ENABLED || DT_HAS_ZMK_BEHAVIOR_MACRO_TWO_PARAM_ENABLED
+
+# New settings for PIM447 Trackball
+config ZMK_BEHAVIOR_TRACKBALL_PIM447
+    bool "Enable PIM447 Trackball Support"
+    default n
+    help
+      Enable support for the PIM447 trackball. This option must be enabled
+      to use the PIM447 trackball with the ZMK firmware.
+
+if ZMK_BEHAVIOR_TRACKBALL_PIM447
+
+config ZMK_TRACKBALL_PIM447_SENSITIVITY
+    int "Trackball Sensitivity"
+    default 10
+    help
+      Set the sensitivity level for the PIM447 trackball. Higher values
+      will make the trackball more sensitive to movements.
+
+endif
