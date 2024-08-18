@@ -6,13 +6,17 @@ config BOARD_ENABLE_DCDC
 	default y
 	depends on (BOARD_NICE_NANO || BOARD_NICE_NANO_V2)
 
-menu "Corne Shield Configuration"
+menu "Nice Nano Configuration"
 
 config ZMK_TRACKBALL_PIM447
-    bool "Enable PIM447 Trackball"
-    default y
+    bool "Enable ZMK trackball PIM447 support"
+    default n
     help
-        Enable support for the PIM447 trackball.
+      Enable support for the PIM447 trackball sensor in ZMK.
+
+source "drivers/zephyr/Kconfig"
+source "boards/shields/corne/Kconfig"
+# Add other relevant Kconfig files here
 
 endmenu
 
