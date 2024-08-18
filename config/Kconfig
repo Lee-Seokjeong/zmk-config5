@@ -25,11 +25,12 @@ config USB_DEVICE_PID
 config USB_DEVICE_MANUFACTURER
 	default "ZMK Project"
 
-menuconfig ZMK_TRACKBALL_PIM447
-    bool "Enable PIM447 Trackball Support"
-    default y
+config ZMK_TRACKBALL_PIM447
+    bool "Enable ZMK trackball PIM447 support"
+    default n
     help
-      Enable support for the Pimoroni Trackball PIM447.
+      Enable support for the PIM447 trackball sensor in ZMK. 
+      This option allows the ZMK firmware to interface with the PIM447 trackball sensor for mouse and scroll functionalities.
 
 menu "HID"
 
