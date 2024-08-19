@@ -1,7 +1,7 @@
 manifest:
   remotes:
-    - name: zephyrproject-rtos
-      url-base: https://github.com/zephyrproject-rtos
+    - name: zmk-config
+      url-base: https://github.com/Lee-Seokjeong/zmk-config
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     - name: microsoft
@@ -12,7 +12,7 @@ manifest:
       revision: v3.5.0+zmk-fixes
       clone-depth: 1
       import:
-        name-blacklist:
+        name-blocklist:
           - ci-tools
           - hal_altera
           - hal_cypress
@@ -28,7 +28,6 @@ manifest:
           - mcuboot
           - mcumgr
           - net-tools
-          - segger
           - openthread
           - edtt
           - trusted-firmware-m
