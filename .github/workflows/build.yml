@@ -1,22 +1,37 @@
-name: Build User Config
+# .github/workflows/build.yml
 
-on: [push, pull_request]
+name: Build ZMK Configuration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Checkout Code
+        uses: actions/checkout@v3  # 최신 버전으로 업데이트
         with:
-          python-version: '3.x'
+          submodules: true  # 서브모듈도 체크아웃
 
-      - name: Install West and ZMK
+      - name: Set Up Python
+        uses: actions/setup-python@v3  # 최신 버전으로 업데이트
+        with:
+          python-version: '3.x'  # 필요한 Python 버전 설정
+
+      - name: Set Up West
         run: |
+          python -m pip install --upgrade pip
           pip install west
-          west init -l
-          west update
-          west build -s zmk/app -b nice_nano_v2 -- -DZMK_CONFIG=${{ secrets.ZMK_CONFIG }} -DSHIELD=corne_right
+          west init -l  # 서브모듈을 올바르게 초기화
+          west update  # 서브모듈 업데이트
+
+      - name: Build
+        run: west build -s zmk/app -b nice_nano_v2 -- -DZMK_CONFIG=${{ secrets.ZMK_CONFIG }} -DSHIELD=corne_right
