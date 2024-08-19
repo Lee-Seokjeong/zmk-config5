@@ -12,7 +12,6 @@ manifest:
       revision: v3.5.0+zmk-fixes
       clone-depth: 1
       import:
-        # TODO: Rename once upstream offers option like `exclude` or `denylist`
         name-blacklist:
           - ci-tools
           - hal_altera
@@ -33,11 +32,6 @@ manifest:
           - openthread
           - edtt
           - trusted-firmware-m
-    - name: zmk
-      remote: zmkfirmware
-      path: zmk
-      revision: main  # 또는 적절한 브랜치/태그
-      clone-depth: 1
     - name: uf2
       remote: microsoft
       path: tools/uf2
