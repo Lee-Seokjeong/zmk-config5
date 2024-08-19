@@ -1,7 +1,7 @@
 manifest:
   remotes:
-    - name: zmk-config
-      url-base: https://github.com/Lee-Seokjeong/zmk-config
+    - name: zephyrproject-rtos
+      url-base: https://github.com/zephyrproject-rtos
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     - name: microsoft
@@ -12,7 +12,7 @@ manifest:
       revision: v3.5.0+zmk-fixes
       clone-depth: 1
       import:
-        name-blocklist:
+        name-blocklist:  # 여기에 블록할 이름 추가
           - ci-tools
           - hal_altera
           - hal_cypress
