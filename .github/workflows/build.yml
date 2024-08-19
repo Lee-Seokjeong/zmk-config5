@@ -14,33 +14,29 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # 최신 버전으로 업데이트
+        uses: actions/checkout@v3  # 최신 버전으로 유지
 
       - name: Set up Python
-        uses: actions/setup-python@v4  # 최신 버전으로 업데이트
+        uses: actions/setup-python@v4  # 최신 버전으로 유지
         with:
-          python-version: '3.9'  # 필요한 Python 버전을 설정합니다.
+          python-version: '3.9'  # 필요에 맞는 Python 버전 설정
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt  # 필요한 의존성을 설치합니다.
+          pip install -r requirements.txt  # 필요에 맞는 패키지 설치
 
       - name: Build project
         run: |
-          # Build commands here, 예를 들어:
-          # make
-          # 또는 필요한 커맨드를 추가합니다.
           echo "Build step placeholder"
+          # 실제 빌드 명령어를 추가합니다.
 
       - name: Run tests
         run: |
-          # Run tests here, 예를 들어:
-          # pytest
           echo "Test step placeholder"
+          # 실제 테스트 명령어를 추가합니다.
 
       - name: Deploy
         run: |
-          # Deploy commands here, 예를 들어:
-          # ./deploy.sh
           echo "Deploy step placeholder"
+          # 실제 배포 명령어를 추가합니다.
