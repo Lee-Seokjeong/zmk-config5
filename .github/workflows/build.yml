@@ -1,5 +1,22 @@
-on: [push, pull_request, workflow_dispatch]
+name: Build User Config
+
+on: [push, pull_request]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install West and ZMK
+        run: |
+          pip install west
+          west init -l
+          west update
+          west build -s zmk/app -b nice_nano_v2 -- -DZMK_CONFIG=${{ secrets.ZMK_CONFIG }} -DSHIELD=corne_right
