@@ -8,9 +8,10 @@ manifest:
       url-base: https://github.com/microsoft
   projects:
     - name: zephyr
-      remote: zmkfirmware
+      remote: zephyrproject-rtos
       revision: v3.7.0
       clone-depth: 1
+      path: zephyr
       import:
         name-blocklist:  # 여기에 블록할 이름 추가
           - ci-tools
