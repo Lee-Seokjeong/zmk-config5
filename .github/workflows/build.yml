@@ -15,6 +15,23 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: docker.io/zmkfirmware/zmk-build-arm:2.5
+    strategy:
+      matrix:
+        board:
+          - nice_nano_v2
+        shield:
+          - corne_left
+          - corne_right
+        cmake-args: [""]
+        include:
+          - board: nice_nano_v2
+            shield: corne_left
+            cmake-args: -DCONFIG_ZMK_DISPLAY=y
+            skip-archive: true
+          - board: nice_nano_v2
+            shield: corne_right
+            cmake-args: -DCONFIG_ZMK_DISPLAY=y
+            skip-archive: true
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -68,11 +85,16 @@ jobs:
 
           ARTIFACT_NAME="${ARTIFACT_NAME}-zmk"
 
+          echo "SHIELD_ARG=${SHIELD_ARG}"
+          echo "ARTIFACT_NAME=${ARTIFACT_NAME}"
           echo ::set-output name=shield-arg::${SHIELD_ARG}
           echo ::set-output name=artifact-name::${ARTIFACT_NAME}
 
       - name: Build (west build)
-        run: west build -s app -b ${{ matrix.board }} -- ${{ steps.variables.outputs.shield-arg }} ${{ matrix.cmake-args }} --pristine
+        run: |
+          echo "Building with board: ${{ matrix.board }}"
+          echo "Build directory: ${{ steps.variables.outputs.shield-arg }}"
+          west build -s app -b ${{ matrix.board }} -- ${{ steps.variables.outputs.shield-arg }} ${{ matrix.cmake-args }} --pristine
 
       - name: Archive artifacts
         if: ${{ !matrix.skip-archive }}
