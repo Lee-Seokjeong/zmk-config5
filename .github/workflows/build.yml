@@ -21,12 +21,12 @@ jobs:
 
       - name: Install CMake 3.20+
         run: |
-          sudo apt-get update
-          sudo apt-get install -y wget
+          apt-get update
+          apt-get install -y wget
           wget https://github.com/Kitware/CMake/releases/download/v3.20.6/cmake-3.20.6-Linux-x86_64.sh
-          sudo mkdir /opt/cmake
-          sudo sh cmake-3.20.6-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
-          sudo ln -s /opt/cmake/bin/cmake /usr/bin/cmake
+          mkdir /opt/cmake
+          sh cmake-3.20.6-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
+          ln -s /opt/cmake/bin/cmake /usr/bin/cmake
 
       - name: Cache west modules
         uses: actions/cache@v2
@@ -82,8 +82,4 @@ jobs:
           path: |
             build/zephyr/zmk.hex
             build/zephyr/zmk.uf2
-
-
-            build/zephyr/zmk.uf2
-        continue-on-error: true
 
