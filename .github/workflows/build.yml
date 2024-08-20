@@ -15,37 +15,35 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: docker.io/zmkfirmware/zmk-build-arm:2.5
-    strategy:
-      matrix:
-        board:
-          - nice_nano_v2
-        shield:
-          - corne_left
-          - corne_right
-        include:
-          - board: nice_nano_v2
-            shield: corne_left
-            cmake-args: -DCONFIG_ZMK_DISPLAY=y
-            skip-archive: true
-          - board: nice_nano_v2
-            shield: corne_right
-            cmake-args: -DCONFIG_ZMK_DISPLAY=y
-            skip-archive: true
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Install CMake 3.20+
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget
+          wget https://github.com/Kitware/CMake/releases/download/v3.20.6/cmake-3.20.6-Linux-x86_64.sh
+          sudo mkdir /opt/cmake
+          sudo sh cmake-3.20.6-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
+          sudo ln -s /opt/cmake/bin/cmake /usr/bin/cmake
+
       - name: Cache west modules
         uses: actions/cache@v2
+        env:
+          cache-name: cache-zephyr-modules
         with:
           path: |
             modules/
             tools/
             zephyr/
             bootloader/
-          key: 4-${{ runner.os }}-build-${{ hashFiles('app/west.yml') }}
+          key: 4-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('app/west.yml') }}
           restore-keys: |
+            4-${{ runner.os }}-build-${{ env.cache-name }}-
             4-${{ runner.os }}-build-
+            4-${{ runner.os }}-
+        timeout-minutes: 2
         continue-on-error: true
 
       - name: Initialize workspace (west init)
@@ -70,22 +68,22 @@ jobs:
 
           ARTIFACT_NAME="${ARTIFACT_NAME}-zmk"
 
-          echo "SHIELD_ARG=${SHIELD_ARG}" >> $GITHUB_ENV
-          echo "ARTIFACT_NAME=${ARTIFACT_NAME}" >> $GITHUB_ENV
-
-      - name: Clean build directory
-        run: rm -rf build
+          echo ::set-output name=shield-arg::${SHIELD_ARG}
+          echo ::set-output name=artifact-name::${ARTIFACT_NAME}
 
       - name: Build (west build)
-        run: west build -s app -b ${{ matrix.board }} -- ${{ env.SHIELD_ARG }} ${{ matrix.cmake-args }} --pristine
+        run: west build -s app -b ${{ matrix.board }} -- ${{ steps.variables.outputs.shield-arg }} ${{ matrix.cmake-args }} --pristine
 
       - name: Archive artifacts
         if: ${{ !matrix.skip-archive }}
         uses: actions/upload-artifact@v2
         with:
-          name: "${{ env.ARTIFACT_NAME }}"
+          name: "${{ steps.variables.outputs.artifact-name }}"
           path: |
             build/zephyr/zmk.hex
+            build/zephyr/zmk.uf2
+        continue-on-error: true
+
             build/zephyr/zmk.uf2
         continue-on-error: true
 
