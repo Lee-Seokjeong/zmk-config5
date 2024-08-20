@@ -82,7 +82,7 @@ jobs:
           path: |
             build/zephyr/zmk.hex
             build/zephyr/zmk.uf2
-        continue-on-error: true
+
 
             build/zephyr/zmk.uf2
         continue-on-error: true
