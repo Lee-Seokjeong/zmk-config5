@@ -9,7 +9,7 @@ manifest:
   projects:
     - name: zephyr
       remote: zmkfirmware
-      revision: v3.5.0+zmk-fixes
+      revision: v2.5.0+zmk-fixes
       clone-depth: 1
       import:
         name-blocklist:  # 여기에 블록할 이름 추가
